@@ -26,5 +26,4 @@ app.use('/api/v1/auth', authRoute)
 
 
 
-
 app.listen(process.env.SERVER_PORT,() => console.log(`App server started at ${process.env.SERVER_PORT}`));

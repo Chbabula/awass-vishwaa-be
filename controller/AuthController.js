@@ -30,8 +30,8 @@ const registerUser = async (req, res) => {
         res.status(400).json({error: 'password should have minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:'})
         return
     }
-const registerUser= async(req,res)=>{
-   const {name, phone, email,username, password}=req.body; 
+// const registerUser= async(req,res)=>{
+//    const {name, phone, email,username, password}=req.body; 
 
    try{
     const userDoc= await User.create({
@@ -47,6 +47,6 @@ const registerUser= async(req,res)=>{
    catch(err){
     res.status(400).end("bad request yes")
    }}
-}
+
 
 module.exports ={ registerUser }
