@@ -30,10 +30,18 @@ const registerUser = async (req, res) => {
         res.status(400).json({error: 'password should have minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:'})
         return
     }
-// const registerUser= async(req,res)=>{
-//    const {name, phone, email,username, password}=req.body; 
 
    try{
+    const userByUsername= await User.findOne({username: username});
+    if(userByUsername){
+        res.status(400).json({error: 'user alredy exists'})
+        return
+    }
+    const userByEmail= await User.findOne({email: email});
+    if(userByEmail){
+        res.status(400).json({error: 'email alredy exists'})
+        return
+    }
     const userDoc= await User.create({
         name,
         phone,
