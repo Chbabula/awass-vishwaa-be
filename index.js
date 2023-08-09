@@ -6,17 +6,17 @@ const healthRoute=require('./routes/HealthRoute')
 const authRoute=require('./routes/AuthRoutes')
 
 
-var whitelist = ['http://localhost:5173', /** other domains if any */ ]
-var corsOptions = {
-  credentials: true,
-  origin: function(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// var whitelist = ['http://localhost:5173', /** other domains if any */ ]
+// var corsOptions = {
+//   credentials: true,
+//   origin: function(origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 
 const app= express();
