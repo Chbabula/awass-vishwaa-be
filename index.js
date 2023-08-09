@@ -21,7 +21,10 @@ var corsOptions = {
 
 const app= express();
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors({
+  credentials: true,
+  origin: ['https://awass-vishwa-fe.vercel.app'],
+}));
 
 //DATABASE CONNECTION
 mongoose.connect(process.env.DATABASE_URL);
