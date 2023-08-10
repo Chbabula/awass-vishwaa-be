@@ -102,5 +102,28 @@ const logoutUser=(req,res)=>{
 }
 
 
+const profileCheck = async (req,res)=>{
 
-module.exports ={ registerUser, loginUser, logoutUser }
+
+    const { token } = req.cookies;
+    if (!token){
+        res.status(401).json({error: 'Please login'})
+        return
+    }
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userDoc = await User.findOne({_id: decoded.id});
+        res.status(200).json({
+            data: {
+                userId: userDoc._id,
+                username: userDoc.username,
+            }
+        })
+    }catch(err){
+        res.status(400).json({error: 'Error occured'})
+        return
+    }
+}
+
+
+module.exports ={ registerUser, loginUser, logoutUser, profileCheck }

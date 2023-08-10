@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose  = require('mongoose')
 const cors = require('cors')
+const cookieParser= require('cookie-parser')
 const healthRoute=require('./routes/HealthRoute')
 const authRoute=require('./routes/AuthRoutes')
 
@@ -9,9 +10,10 @@ const authRoute=require('./routes/AuthRoutes')
 
 const app= express();
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors({
   credentials: true,
-  origin: ['https://awass-vishwa-fe.vercel.app'],
+  origin: ['http://localhost:5173']
 }));
 
 //DATABASE CONNECTION
