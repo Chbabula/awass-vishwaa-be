@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
   credentials: true,
-  origin: ['https://awaas-vishwa.vercel.app']
+  origin: ['https://awass-vishwa-fe-chbabula.vercel.app/']
 }));
 
 //DATABASE CONNECTION
