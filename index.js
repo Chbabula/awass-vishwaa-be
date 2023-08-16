@@ -5,6 +5,7 @@ const cors = require('cors')
 const cookieParser= require('cookie-parser')
 const healthRoute=require('./routes/HealthRoute')
 const authRoute=require('./routes/AuthRoutes')
+const ItemsRoutes = require('./routes/ItemsRoutes')
 
 
 
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
   credentials: true,
-  origin: ['https://awass-vishwa-fe-chbabula.vercel.app/']
+  origin: ['https://awass-vishwa-fe.vercel.app', 'http://localhost:5173']
 }));
 
 //DATABASE CONNECTION
@@ -26,6 +27,7 @@ mongoose.connection.on("error", (error)=>console.log("database error: ",error))
 
 app.use('/health', healthRoute)
 app.use('/api/v1/auth', authRoute)
+app.use('/api/v1/items', ItemsRoutes)
 
 
 
